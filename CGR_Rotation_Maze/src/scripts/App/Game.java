@@ -1,18 +1,17 @@
-package sample.App;
+package scripts.App;
 
 import javafx.animation.AnimationTimer;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import sample.Controller.InputController;
-import sample.GameObject.Circle;
-import sample.GameObject.LineSegment;
-import sample.Other.Config;
+import scripts.Controller.InputController;
+import scripts.GameObject.Circle;
+import scripts.GameObject.LineSegment;
+import scripts.Other.Config;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -121,8 +120,29 @@ public class Game {
      * Initialize player ball and exit dot
      */
     private void InitializeBalls() {
-        circles.add(new Circle(216, 216, 7, Color.RED, 0, 0, 100.0, false));
-        circles.add(new Circle(1000 - 225, 1000 - 219, 7, Color.GREEN, 0, 0, 100.0, true));
+        // Player Circle
+        circles.add(new Circle(
+                216,
+                216,
+                7,
+                Color.RED,
+                0,
+                0,
+                100.0,
+                false
+        ));
+
+        // Maze end visualization
+        circles.add(new Circle(
+                1000 - 225,
+                1000 - 219,
+                7,
+                Color.GREEN,
+                0,
+                0,
+                100.0,
+                true
+        ));
     }
 
     /**
@@ -132,21 +152,50 @@ public class Game {
         // Borders
         double limiter = (double) Config.CANVAS_WIDTH / 5;
         double frame_radius = 1;
-        lineSegments.add(new LineSegment(0 + limiter, 0 + limiter, Config.CANVAS_WIDTH - limiter, 0 + limiter, frame_radius, false, Config.FRAME_COLOR)); // Top
-        lineSegments.add(new LineSegment(Config.CANVAS_WIDTH - limiter, 0 + limiter, Config.CANVAS_WIDTH - limiter, Config.CANVAS_HEIGHT - limiter, frame_radius, false, Config.FRAME_COLOR)); // Right
-        lineSegments.add(new LineSegment(0 + limiter, Config.CANVAS_HEIGHT - limiter, Config.CANVAS_WIDTH - limiter - 50, Config.CANVAS_HEIGHT - limiter, frame_radius, false, Config.FRAME_COLOR)); // Bottom
-        lineSegments.add(new LineSegment(0 + limiter, 0 + limiter, 0 + limiter, Config.CANVAS_HEIGHT - limiter, frame_radius, false, Config.FRAME_COLOR)); // Left
+
+        lineSegments.add(new LineSegment(
+                0 + limiter, 0 + limiter, Config.CANVAS_WIDTH - limiter, 0 + limiter, frame_radius, false, Config.FRAME_COLOR
+        )); // Top
+
+        lineSegments.add(new LineSegment(
+                Config.CANVAS_WIDTH - limiter,
+                0 + limiter,
+                Config.CANVAS_WIDTH - limiter,
+                Config.CANVAS_HEIGHT - limiter,
+                frame_radius,
+                false,
+                Config.FRAME_COLOR
+        )); // Right
+
+        lineSegments.add(new LineSegment(
+                0 + limiter,
+                Config.CANVAS_HEIGHT - limiter,
+                Config.CANVAS_WIDTH - limiter - 50,
+                Config.CANVAS_HEIGHT - limiter,
+                frame_radius,
+                false,
+                Config.FRAME_COLOR
+        )); // Bottom
+
+        lineSegments.add(new LineSegment(
+                0 + limiter,
+                0 + limiter,
+                0 + limiter,
+                Config.CANVAS_HEIGHT - limiter,
+                frame_radius,
+                false,
+                Config.FRAME_COLOR
+        )); // Left
     }
 
     /**
      * Initialize maze (290x290)
      */
     private void InitializeMap() {
-        String path = "src/maze.png";
         BufferedImage bf = null;
 
         try {
-            bf = ImageIO.read(new File(path));
+            bf = ImageIO.read(getClass().getResourceAsStream("/images/maze.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -215,19 +264,18 @@ public class Game {
      * @return Image as JavaFX image
      */
     private Image LoadBackgroundImage() {
-        String path = "src/dem_arrows.png";
-        BufferedImage bi = null;
+        BufferedImage bf = null;
 
         try {
-            bi = ImageIO.read(new File(path));
+            bf = ImageIO.read(getClass().getResourceAsStream("/images/dem_arrows.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Image image = null;
 
-        if (bi != null) {
-            image = SwingFXUtils.toFXImage(bi, null);
+        if (bf != null) {
+            image = SwingFXUtils.toFXImage(bf, null);
         }
 
         return image;

@@ -1,10 +1,10 @@
-package sample.GameObject;
+package scripts.GameObject;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import sample.Controller.InputController;
-import sample.Other.Config;
+import scripts.Controller.InputController;
+import scripts.Other.Config;
 
 public class LineSegment {
 

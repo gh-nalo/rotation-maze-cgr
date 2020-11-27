@@ -1,10 +1,10 @@
-package sample.Controller;
+package scripts.Controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import sample.App.Main;
-import sample.Other.Config;
+import scripts.App.Main;
+import scripts.Other.Config;
 
 import java.util.HashSet;
 

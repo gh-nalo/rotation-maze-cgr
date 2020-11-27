@@ -1,4 +1,4 @@
-package sample.App;
+package scripts.App;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sample.Other.Config;
+import scripts.Other.Config;
 
 public class Main extends Application {
 

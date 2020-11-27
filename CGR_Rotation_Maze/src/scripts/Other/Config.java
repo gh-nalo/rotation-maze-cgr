@@ -1,4 +1,4 @@
-package sample.Other;
+package scripts.Other;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;

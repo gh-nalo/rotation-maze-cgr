@@ -1,11 +1,11 @@
-package sample.GameObject;
+package scripts.GameObject;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import sample.App.Game;
-import sample.Controller.InputController;
-import sample.Other.Config;
+import scripts.App.Game;
+import scripts.Controller.InputController;
+import scripts.Other.Config;
 
 import java.util.ArrayList;
 
